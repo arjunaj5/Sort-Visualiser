@@ -34,16 +34,26 @@ export const Nav = (props) => {
     
     </div>
     <div className="nav-right">
-    <input type="range" min="5" max="200" value={props.prop.state.arrSize} title="array size"   onChange={(e)=>{
+        <div className="range-slider-label">
+            <label htmlFor="speed">Toogle Speed:</label>
+            <label htmlFor="array-size">Array Size:</label>
+            <label htmlFor="graph-size">Graph Size:</label>
+        </div>
+        <div className = "range-sliders">
+        <input id="speed" title="speed" type="range" min="0" max="500" step="100" value={props.prop.state.speed} onChange={(e)=>{
+            props.prop.setState({speed:e.target.value})
+            
+        }}/>
+    <input id="array-size" type="range" min="5" max="200" value={props.prop.state.arrSize}  title="array size"   onChange={(e)=>{
         props.prop.setState({arrSize:e.target.value})
         props.prop.clearAll(window)
         props.prop.clickGen()
        }}/>
       
-    <input title="graph size" type="range" min="1" max="10" value={props.prop.state.style} onChange={(e)=>{
+    <input title="graph size" id="graph-size" type="range" min="1" max="15" value={props.prop.state.style} onChange={(e)=>{
         props.prop.setState({style:e.target.value})
     }}/>                        
-
+            </div>
     <button onClick={()=>{props.prop.clearAll(window)}} >Stop</button>
   
     <button onClick={props.prop.clickGen} >Generate Array</button>

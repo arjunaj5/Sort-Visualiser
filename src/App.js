@@ -3,7 +3,7 @@ import { Nav } from "./components/Nav";
         class App extends Component{
             constructor(props){
                 super(props)
-                this.state={list:[],index:[-1,-1],sortedIndex:[],arrSize:4,style:5,}
+                this.state={list:[],index:[-1,-1],sortedIndex:[],arrSize:4,style:5,speed:0}
                 
                 this.clickGen=this.clickGen.bind(this)
                 this.genList=this.genList.bind(this)// to use this.state in clickGen
@@ -50,7 +50,7 @@ import { Nav } from "./components/Nav";
                 
                     setTimeout(() => {
                         this.setState({list:newArray[i],index:temp[i],sortedIndex:temp2[i]})
-                    }, (i+1)*10);
+                    }, (i+1)*(501-this.state.speed));
                 }
                
             }
